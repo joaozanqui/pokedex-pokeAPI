@@ -34,7 +34,7 @@ function App() {
 
   // Solicitação para buscar dados do backend.
   useEffect(() => {
-    fetch("/api").then(
+    fetch("/").then(
       response => response.json()
     ).then(
       data => {
