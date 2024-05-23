@@ -48,7 +48,7 @@ const getPokemons = async () => {
 getPokemons();
 
 //Solicitação com um objeto JSON que contém a lista de pokémons.
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.json({ pokemons });
 });
 
