@@ -2,7 +2,7 @@ import express from 'express';
 import axios from 'axios';
 
 const app = express();
-const port = 3333;
+const port = process.env.PORT || 3333;
 //Criacao de uma lista que vai armazenar os pokemons da api
 const pokemons = [];
 
