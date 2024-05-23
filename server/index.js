@@ -52,10 +52,6 @@ app.get("/", (req, res) => {
     res.json({ pokemons });
 });
 
-app.use("/", (req, res) => {
-    res.send("Server running");
-});
-
 // Inicia o servidor na porta especificada.
 app.listen(port, () => {
     console.log(`Running at http://localhost:${port}`);
