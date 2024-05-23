@@ -48,11 +48,11 @@ const getPokemons = async () => {
 getPokemons();
 
 //Solicitação com um objeto JSON que contém a lista de pokémons.
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
     res.json({ pokemons });
 });
 
-app.use("/api", (req, res) => {
+app.use("/", (req, res) => {
     res.send("Server running");
 });
 
