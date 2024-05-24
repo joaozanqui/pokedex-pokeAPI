@@ -49,23 +49,27 @@ Para executar este projeto localmente, siga os passos abaixo:
 1. Clone o repositório do projeto:
    ```bash
    git clone https://github.com/joaozanqui/pokedex-pokeapi.git
-
-2. Altere o proxy no arquivo package.json da pasta client:
-
+2. Altere o "proxy" e o "start" no arquivo package.json da pasta client:
   - Abra o arquivo client/package.json
-  - Encontre a linha que contém:
+  - Encontre as linhas que contém:
     ``` bash
     "proxy": "https://pokedex-pokeapi-server.onrender.com"
+    "start": "DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
   - Altere para:
     ```bash
     "proxy": "http://localhost:3333"
+    "start": "react-scripts start"
   - Salve as alterações.
-3. Acesse a pasta server pelo terminal e inicie o servidor:
+3. Navegue até a pasta do servidor no terminal e inicie o servidor. Instale o Express em seu sistema, caso não possua:
     ```bash
     cd server
+    npm install express
     npm start
-4. Em outro terminal, acesse a pasta client e inicie o aplicativo React:
+    ```
+4. Em outro terminal, acesse a pasta client e inicie o aplicativo React. Instale o React em seu sistema, caso não possua:
     ```bash
+    cd client
+    npm install react
     npm start
-
+   ```
 5. Abra o navegador e vá para http://localhost:3000 para visualizar o projeto. O servidor backend estará rodando em http://localhost:3333.
