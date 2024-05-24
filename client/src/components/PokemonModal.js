@@ -5,7 +5,7 @@ const PokemonModal = ({ currentPokemon, displayPopup, hidePopup, buildPokemonsCo
     return (
         <div className="modal fade show" tabIndex="-1" id='modal-to-remove' style={{ display: displayPopup }}>
             <div className="modal-md position-absolute top-50 start-50 translate-middle card rounded-4 border border-5" id='pokemonSelected'>
-                
+
                 {/* Nome do pokemon e botao de fechar */}
                 <div className="modal-header bg-primary-subtle">
                     <h1 className="modal-title fs-4">{currentPokemon.name}</h1>
@@ -25,13 +25,33 @@ const PokemonModal = ({ currentPokemon, displayPopup, hidePopup, buildPokemonsCo
                         <p className='m-2'>Tipo: {currentPokemon && currentPokemon.types ? currentPokemon.types.join(', ') : 'No types available'}</p>
 
                     </div>
-                    
+
                     {/* Informacoes na direita e botao para comparacao */}
                     <div className='d-flex flex-column align-items-center'>
                         <p className='m-2'>Habilidades: {currentPokemon && currentPokemon.abilities ? currentPokemon.abilities.join(', ') : 'No types available'}</p>
                         <p className='m-2'>Pontos de Experiência: {currentPokemon.base_experience}</p>
                         <p className='m-2'>Soma dos Atributos de Base: {currentPokemon.base_stat}</p>
-                        <button
+
+                        <div className="dropdown-center">
+                            <button
+                                className="btn btn-primary dropdown-toggle button-to-remove"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Comparar Pokemon
+                            </button>
+                            <ul className="dropdown-menu button-to-remove" aria-labelledby="dropdownMenuButton">
+                                <li><a className="dropdown-item" onClick={() => buildPokemonsComparing(1, "height")} href="#">Altura</a></li>
+                                <li><a className="dropdown-item" onClick={() => buildPokemonsComparing(1, "weight")} href="#">Peso</a></li>
+                                <li><a className="dropdown-item" onClick={() => buildPokemonsComparing(1, "base_experience")} href="#">Pontos de Experiência</a></li>
+                                <li><a className="dropdown-item" onClick={() => buildPokemonsComparing(1, "base_stat")} href="#">Soma dos atributos de base</a></li>
+                            </ul>
+                        </div>
+
+
+                        {/* <button
                             type="button"
                             className="btn btn-outline-primary button-to-remove"
                             data-mdb-ripple-init
@@ -39,7 +59,7 @@ const PokemonModal = ({ currentPokemon, displayPopup, hidePopup, buildPokemonsCo
                             onClick={() => buildPokemonsComparing(1)}
                         >
                             Comparar Atributos de Base
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 

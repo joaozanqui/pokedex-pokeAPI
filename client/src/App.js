@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 
 //Importando os estilos, foi utilizado a biblioteca bootstrap para a estilização do projeto
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 //Importando os componentes
 import Header from './components/Header';
@@ -21,7 +22,9 @@ var is_comparing = false;
 // Variavel global pra saber se ja foi feita uma comparacao
 var is_compared = false;
 // Variavel global pra salvar o primeiro pokemon a ser comparado
-var pokemon_to_compare
+var pokemon_to_compare;
+// Variavel global pra salvar o stats que vai ser comparado
+var stat_to_compare;
 
 function App() {
   // Estado para armazenar os dados recebidos do backend
@@ -79,7 +82,7 @@ function App() {
 
     //Se esta sendo feita uma comparacao, entao coloca o card do segundo pokemon na box de comparacao
     if (is_comparing) {
-      buildPokemonsComparing(2);
+      buildPokemonsComparing(2, false);
     }
   }
 
@@ -89,7 +92,7 @@ function App() {
   }
 
   //Função para construir a seção de comparação de dois pokemons
-  function buildPokemonsComparing(pos) {
+  function buildPokemonsComparing(pos, stat_selected) {
     is_comparing = true;
     setDisplayComparingBox("block");
 
@@ -107,6 +110,9 @@ function App() {
 
     if (pos === 1) {
       var buttons_to_remove;
+      
+      // salva o stat que vai ser comparado
+      stat_to_compare = stat_selected;
 
       //Salva o primeiro pokemon selecionado em uma variavel para que possa selecionar o segundo
       pokemon_to_compare = { ...current_pokemon };
@@ -144,16 +150,41 @@ function App() {
 
   // Função que realiza a comparação entre os atributos de base
   function comparingPokemons(pokemon1, pokemon2) {
+    
+    //Descobrindo o stat que sera comparado
+    var pokemon1_stat, pokemon2_stat, best_pokemon_stat;
+    var stat_translate;
+    console.log(stat_to_compare);
+    if(stat_to_compare == "height") {
+      stat_translate = "altura";
+      pokemon1_stat = pokemon1.height;
+      pokemon2_stat = pokemon2.height;
+    } else if(stat_to_compare == "weight") {
+      stat_translate = "peso";
+      pokemon1_stat = pokemon1.weight;
+      pokemon2_stat = pokemon2.weight;
+    } else if (stat_to_compare == "base_experience" ) {
+      stat_translate = "experiência";
+      pokemon1_stat = pokemon1.base_experience;
+      pokemon2_stat = pokemon2.base_experience;
+    } else if(stat_to_compare == "base_stat" ) {
+      stat_translate = "atributos de base";
+      pokemon1_stat = pokemon1.base_stat;
+      pokemon2_stat = pokemon2.base_stat;
+    }
+
     // Removendo a janela modal
     var modal_to_remove = document.getElementById("modal-to-remove");
     modal_to_remove.remove();
 
-    // Descobrindo qual pokemon tem a maior soma dos atributos de base
+    // Descobrindo qual pokemon tem a maior soma dos stats
     var best_pokemon;
-    if (pokemon1.base_stat > pokemon2.base_stat) {
+    if (pokemon1_stat > pokemon2_stat) {
       best_pokemon = pokemon1;
-    } else if (pokemon1.base_stat < pokemon2.base_stat) {
+      best_pokemon_stat = pokemon1_stat;
+    } else if (pokemon1_stat < pokemon2_stat) {
       best_pokemon = pokemon2;
+      best_pokemon_stat = pokemon2_stat;
     } else {
       best_pokemon = false;
     }
@@ -161,7 +192,7 @@ function App() {
     // Adicionando o texto e o botao de restart na seção de comparação
     var card = document.getElementById("pokemonsComparingCard");
     var best_pokemon_text = document.createElement("h3");
-    best_pokemon_text.classList.add('text-center', 'text-capitalize');
+    best_pokemon_text.classList.add('text-center');
     var restart_button = document.createElement("button");
     restart_button.classList.add('btn', 'btn-outline-primary', 'mt-3');
     restart_button.textContent = "REINICIAR";
@@ -170,9 +201,9 @@ function App() {
     });
 
     if (!best_pokemon)
-      best_pokemon_text.textContent = pokemon1.name + " e " + pokemon2.name + " possuem o mesmo valor da soma dos atributos de base: " + pokemon1.base_stat;
+      best_pokemon_text.textContent = pokemon1.name + " e " + pokemon2.name + " possuem o mesmo valor de " + stat_translate + ": " + pokemon1_stat;
     else
-      best_pokemon_text.textContent = best_pokemon.name + " possui a maior soma dos atributos de base: " + best_pokemon.base_stat;
+      best_pokemon_text.textContent = best_pokemon.name + " possui o maior valor de " + stat_translate + ": " + best_pokemon_stat;
 
     card.appendChild(best_pokemon_text);
     card.appendChild(restart_button);
