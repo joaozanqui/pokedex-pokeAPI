@@ -5,8 +5,11 @@ const PokemonList = ({ pokemons, selectPokemon }) => {
   return (
     // Animacao enquanto nao achar pokemons
     (typeof pokemons === 'undefined') ? (
-      <div className="spinner-border" role="status">
-        <span className="visually-hidden">Loading...</span>
+      <div className='d-flex flex-column align-items-center'>
+        <h3>Carregando...</h3>
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
     ) : (
       pokemons.map((pokemon, i) => (

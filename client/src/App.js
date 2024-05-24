@@ -15,6 +15,9 @@ import PokemonList from './components/PokemonList';
 import PokemonModal from './components/PokemonModal';
 import ComparingBox from './components/ComparingBox';
 
+// Aplicando tema dark para toda a pagina
+document.body.classList.add('bg-dark');
+
 // Variável global para abrir a janela modal do Pokemon selecionado
 var current_pokemon = {};
 // Variável global para controlar se o pokemon selecionado vai ser comparado ou nao
