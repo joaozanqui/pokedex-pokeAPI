@@ -6,29 +6,22 @@ Este projeto é uma Pokedex feita utilizando React para o frontend e Node.js par
 
 ### Frontend
 
-O frontend foi desenvolvido utilizando React e Bootstrap para a estilização. Ele permite ao usuário selecionar um Pokémon, ou pesquisar pelo nome para visualizar suas informações. Além disso, é possível comparar os atributos de base de dois Pokémons.
+O frontend foi desenvolvido utilizando React e Bootstrap para a estilização. Ele permite ao usuário selecionar um Pokémon, ou pesquisar pelo nome para visualizar suas informações. Além disso, é possível fazer a comparação dos atributos de dois Pokémons.
 
 ### Backend
 
-O backend foi construído usando Node.js e Express. Ele se conecta à PokeAPI para buscar e organizar os dados dos Pokémons, servindo esses dados para o frontend.
+O backend foi construído utilizando Node.js e Express. Ele se conecta à PokeAPI para buscar e organizar os dados dos Pokémons, servindo esses dados para o frontend.
 
 ### PokeAPI
 
 A [PokeAPI](https://pokeapi.co/) é uma API pública que fornece informações detalhadas sobre os Pokémons. Ela inclui dados como nome, altura, peso, habilidades, tipos e atributos de base de cada Pokémon.
-
-## Funcionalidades
-
-- **Listar Pokémons**: Exibe uma lista dos primeiros 151 Pokémons.
-- **Pesquisar Pokémon**: Permite pesquisar por um Pokémon específico pelo nome.
-- **Visualizar Informações**: Mostra informações detalhadas de um Pokémon selecionado.
-- **Comparar Atributos de Base**: Compara os atributos de base de dois Pokémons selecionados.
 
 ### Como Utilizar
 
 1. **Listar Pokémons**: Navegue pela lista de Pokémons na página inicial.
 2. **Pesquisar Pokémon**: Use a barra de pesquisa para encontrar um Pokémon pelo nome.
 3. **Visualizar Informações**: Clique em um Pokémon na lista ou nos resultados da pesquisa para ver suas informações detalhadas.
-4. **Comparar Atributos de Base**: Clique no botão "Comparar Atributos de Base" no card do Pokémon e, em seguida, selecione outro Pokémon para comparação.
+4. **Comparar Stats de Dois Pokemons**: Clique no botão "Comparar Pokemon" no card do Pokémon, selecione o stat que deseja comparar e, em seguida, selecione outro Pokémon para realizar a comparação.
 
 ### Acesso Online
 
@@ -60,16 +53,16 @@ Para executar este projeto localmente, siga os passos abaixo:
     "proxy": "http://localhost:3333"
     "start": "react-scripts start"
   - Salve as alterações.
-3. Navegue até a pasta do servidor no terminal e inicie o servidor. Instale o Express em seu sistema, caso não possua:
+3. Navegue até a pasta do servidor no terminal, instale o Express e inicie o servidor.:
     ```bash
     cd server
     npm install express
     npm start
     ```
-4. Em outro terminal, acesse a pasta client e inicie o aplicativo React. Instale o React em seu sistema, caso não possua:
+4. Em outro terminal, acesse a pasta client, instale o pacote react-scripts e inicie o aplicativo React.
     ```bash
     cd client
-    npm install react
+    npm install react-scripts
     npm start
    ```
 5. Abra o navegador e vá para http://localhost:3000 para visualizar o projeto. O servidor backend estará rodando em http://localhost:3333.
