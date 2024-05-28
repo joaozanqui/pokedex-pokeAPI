@@ -27,7 +27,7 @@ A [PokeAPI](https://pokeapi.co/) é uma API pública que fornece informações d
 
 O projeto foi hospedado na plataforma [Render](https://render.com/). Você pode acessar o projeto online através do link abaixo:
 
-- **Pokedex Frontend (O carregamento da página pode ser lento devido à hospedagem gratuita)**: [https://pokedex-pokeapi-client.onrender.com/](https://pokedex-pokeapi-client.onrender.com/)
+- **Pokedex Frontend (O carregamento da página pode demorar até 5 minutos devido à hospedagem gratuita, caso não apareça os 151 pokemons ao carregar pela primeira vez, atualize a página)**: [https://pokedex-pokeapi-client.onrender.com/](https://pokedex-pokeapi-client.onrender.com/)
 
 A API criada com Node.js para fornecer os dados dos Pokémons ao frontend também foi hospedada no Render. Acesse a API através do link:
 
